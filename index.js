@@ -27,10 +27,10 @@ class Scene {
     }
 
     render = (canvasContext, delta) => {
-        if (this.sun.y > canvasContext.canvas.height) {
+        if (this.sun.y > canvasContext.canvas.height && this.sunVelocity.y > 0) {
             this.sunVelocity = { x: 0, y: -0.1 };
         }
-        else if (this.sun.y < this.SUN_MIN_Y) {
+        else if (this.sun.y < this.SUN_MIN_Y && this.sunVelocity.y < 0) {
             this.sunVelocity = { x: 0, y: 0.1 };
         }
         this.sun.x += this.sunVelocity.x * delta;
