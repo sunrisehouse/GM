@@ -1,0 +1,121 @@
+:root {
+    --main-color-1: #f8efc7;
+    --main-color-2: #f4eb99;
+    --main-color-3: #c9db5f;
+    --main-color-4: #65b02c;
+    --main-color-5: #15902d;
+    --sub-color-1: #d5fbff;
+    --primary-font-color-0: #dddddd;
+    --primary-font-color-1: #666666;
+    --primary-font-color-2: #15902d;
+    --sky-background-image-url: url("./resources/sky.jpeg")
+}
+
+* { margin:0; padding:0; } /* to remove the top and left whitespace */
+
+html, body { width:100%; height:100%; } /* just to be sure these are full screen*/
+
+canvas { display:block; } /* To remove the scrollbars */
+
+#sky-layer {
+    height: 300px;
+    position: relative;
+}
+
+#sun-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#sun-layer circle {
+    fill: var(--main-color-2);
+    stroke: var(--main-color-2);
+    stroke-width: 1;
+}
+
+.logo {
+    position: absolute;
+    width: 300px;
+    top: 00px;
+    right: 0px;
+}
+
+.ground {
+    background-color: var(--main-color-3);
+}
+
+.page-center-container {
+    padding: 20px 16px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.minting-section {
+    background-color: var(--main-color-2);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+}
+.minting-section .minting-date {
+    color: var(--primary-font-color-2);
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.minting-section .nft-marketplace {
+    color: var(--primary-font-color-1);
+}
+.minting-section .opensea {
+    color: var(--primary-font-color-2);
+    margin-bottom: 20px;
+}
+.minting-section .count {
+    color: var(--primary-font-color-1);
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+.minting-section .cost {
+    color: var(--primary-font-color-1);
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+.minting-section .gas-fee-info {
+    color: var(--primary-font-color-1);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.minting-section .button-info {
+    color: var(--primary-font-color-1);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+#connect-button {
+    color: var(--primary-font-color-1);
+}
+
+.caution-section {
+    padding: 20px;
+    margin-top: 20px;
+    color: var(--primary-font-color-1);
+}
+
+.information-section {
+    background-color: var(--main-color-4);
+    color: var(--primary-font-color-0);
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.information-section .info-container {
+    margin-bottom: 60px;
+}
+.information-section h2 {
+    font-size: 40px;
+    margin-bottom: 32px;
+}
+.information-section p {
+    margin-bottom: 20px;
+}
