@@ -37,21 +37,37 @@ class ImageObject {
 }
 
 class Scene {
-    palletes = [
-        {sunColor: '#f4eb99', skyColor: '#ffffff'}
-    ];
     SUN_MIN_Y = 100;
+    TRAVELER_IMAGE_URLS = [
+        './resources/red-car.png',
+        './resources/boat.png',
+        './resources/red-car.png',
+    ]
+    IMAGE_OBJECT_SIZES = [
+        {leftOffset: 60, topOffset: 114, width: 200, height: 200},
+        {leftOffset: 0, topOffset: 67, width: 72, height: 72},
+        {leftOffset: 60, topOffset: 114, width: 200, height: 200},
+    ]
 
     constructor(initialWidth, initialHeight, sunEle) {
+        this.curImageIdx = 0;
         this.sunEle = sunEle;
-        this.sun = new Circle(100, this.SUN_MIN_Y, 25, this.palletes[0].sunColor);
+        this.sun = new Circle(100, this.SUN_MIN_Y, 25);
         this.sunVelocity = { x: 0, y: 0 };
         this.traveler = this.makeCarTraveler(initialWidth, initialHeight);
         this.travelerVelocity = { x:-0.2, y:0 };
     }
 
     makeCarTraveler = (width, height) => {
-        return new ImageObject(width - 60, height - 114, 200, 200, './resources/red-car.png');
+        const imageObject = new ImageObject(
+            width - this.IMAGE_OBJECT_SIZES[this.curImageIdx].leftOffset,
+            height - this.IMAGE_OBJECT_SIZES[this.curImageIdx].topOffset,
+            this.IMAGE_OBJECT_SIZES[this.curImageIdx].width,
+            this.IMAGE_OBJECT_SIZES[this.curImageIdx].height,
+            this.TRAVELER_IMAGE_URLS[this.curImageIdx]);
+        this.curImageIdx += 1;
+        if (this.curImageIdx == this.TRAVELER_IMAGE_URLS.length) this.curImageIdx = 0;
+        return imageObject;
     };
 
     render = (canvasContext, delta, onSunArrivedOnGround) => {
