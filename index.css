@@ -38,9 +38,9 @@ canvas { display:block; } /* To remove the scrollbars */
 
 .logo {
     position: absolute;
-    width: 250px;
-    top: 00px;
-    right: 0px;
+    width: 180px;
+    top: 12px;
+    right: 12px;
 }
 
 .ground {
