@@ -145,7 +145,7 @@ canvas { display:block; } /* To remove the scrollbars */
 }
 
 #nft-showing-section {
-    height: 800px;
+    height: 1400px;
     margin-top: 60px;
     border-radius: 8px;
     overflow: hidden;
