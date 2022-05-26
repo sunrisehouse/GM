@@ -95,6 +95,35 @@ class Scene {
     };
 }
 
+class AppearElement {
+    constructor(ids) {
+        this.elements = ids.map(id => document.getElementById(id));
+
+        this.elements.forEach(ele => {
+            ele.classList.add('appear-element')
+        });
+
+        window.addEventListener('scroll', this.onScroll);
+    }
+
+    onScroll = () => {
+        const currentScrollTopY = window.scrollY;
+        const currentScrollBottomY = currentScrollTopY + window.innerHeight;
+
+        this.elements.forEach(ele => {
+            const elementRect = ele.getBoundingClientRect();
+            const elementTopY = currentScrollTopY + elementRect.top;
+            const elementBottomY = currentScrollTopY + elementRect.bottom;
+    
+            if (currentScrollBottomY < elementTopY || currentScrollTopY > elementBottomY) {
+                ele.classList.remove('active');
+            } else {
+                ele.classList.add('active');
+            }
+        });
+    };
+}
+
 class Page {
     palletes = [
         {
@@ -137,14 +166,13 @@ class Page {
     constructor() {
         this.sky = document.getElementById('sky-layer');
         this.canvasEle = document.getElementById('scene');
-        this.informationSectionEle = document.getElementById('information-section');
         this.scene = new Scene(this.sky.clientWidth, this.sky.clientHeight, document.getElementById('sun'));
         this.currentPalletIdx = 0;
+        new AppearElement(['information-section', 'nft-showing-section'])
 
         this.matchCanvasToSky();
         this.canvasContext = this.canvasEle.getContext('2d');
         window.addEventListener('resize', this.onResizeCanvas, false);
-        window.addEventListener('scroll', this.onScroll);
 
         this.prevTime = 0;
         this.render(0);
@@ -152,20 +180,6 @@ class Page {
 
     onResizeCanvas = () => {
         this.matchCanvasToSky();
-    };
-    
-    onScroll = () => {
-        const currentScrollTopY = window.scrollY;
-        const currentScrollBottomY = currentScrollTopY + window.innerHeight;
-        const elementRect = this.informationSectionEle.getBoundingClientRect();
-        const elementTopY = currentScrollTopY + elementRect.top;
-        const elementBottomY = currentScrollTopY + elementRect.bottom;
-
-        if (currentScrollBottomY < elementTopY || currentScrollTopY > elementBottomY) {
-            this.informationSectionEle.classList.remove('active');
-        } else {
-            this.informationSectionEle.classList.add('active');
-        }
     };
 
     matchCanvasToSky = () => {

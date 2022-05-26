@@ -133,15 +133,10 @@ canvas { display:block; } /* To remove the scrollbars */
     padding: 40px;
     border-radius: 8px;
     margin-top: 20px;
-    
-    position: relative;
-    transform: translateY(150px);
+    transition: var(--color-change-duration) background-color;
+    /* transform: translateY(150px);
     opacity: 0;
-    transition: var(--color-change-duration) background-color, transform 1s ease, opacity 1s ease;
-}
-#information-section.active {
-    transform: translateY(0);
-    opacity: 1;
+    transition:  1s ease, opacity 1s ease; */
 }
 #information-section .info-container {
     margin-bottom: 60px;
@@ -159,4 +154,15 @@ canvas { display:block; } /* To remove the scrollbars */
     margin-top: 60px;
     border-radius: 8px;
     overflow: hidden;
+    background-color: #ffffff;
+}
+
+.appear-element {
+    transform: translateY(150px);
+    opacity: 0;
+    transition: transform 1s ease 0s, opacity 1s ease 0s, background-color var(--color-change-duration) !important;
+}
+.appear-element.active {
+    transform: translateY(0);
+    opacity: 1;
 }
