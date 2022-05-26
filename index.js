@@ -137,12 +137,14 @@ class Page {
     constructor() {
         this.sky = document.getElementById('sky-layer');
         this.canvasEle = document.getElementById('scene');
+        this.informationSectionEle = document.getElementById('information-section');
         this.scene = new Scene(this.sky.clientWidth, this.sky.clientHeight, document.getElementById('sun'));
         this.currentPalletIdx = 0;
 
         this.matchCanvasToSky();
         this.canvasContext = this.canvasEle.getContext('2d');
         window.addEventListener('resize', this.onResizeCanvas, false);
+        window.addEventListener('scroll', this.onScroll);
 
         this.prevTime = 0;
         this.render(0);
@@ -150,6 +152,20 @@ class Page {
 
     onResizeCanvas = () => {
         this.matchCanvasToSky();
+    };
+    
+    onScroll = () => {
+        const currentScrollTopY = window.scrollY;
+        const currentScrollBottomY = currentScrollTopY + window.innerHeight;
+        const elementRect = this.informationSectionEle.getBoundingClientRect();
+        const elementTopY = currentScrollTopY + elementRect.top;
+        const elementBottomY = currentScrollTopY + elementRect.bottom;
+
+        if (currentScrollBottomY < elementTopY || currentScrollTopY > elementBottomY) {
+            this.informationSectionEle.classList.remove('active');
+        } else {
+            this.informationSectionEle.classList.add('active');
+        }
     };
 
     matchCanvasToSky = () => {

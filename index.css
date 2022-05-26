@@ -9,7 +9,9 @@
     --primary-font-color-3: #15902d;
 
     --sun-color: var(--main-color-2);
-    --ground-color: var(--main-color-3)
+    --ground-color: var(--main-color-3);
+
+    --color-change-duration: 2s;
 }
 
 * { margin:0; padding:0; } /* to remove the top and left whitespace */
@@ -35,7 +37,7 @@ canvas { display:block; } /* To remove the scrollbars */
     stroke-width: 1;
     fill: var(--sun-color);
     stroke: var(--sun-color);
-    transition: fill 2s, stroke 2s;
+    transition: fill var(--color-change-duration), stroke var(--color-change-duration);
 }
 
 .logo {
@@ -46,7 +48,7 @@ canvas { display:block; } /* To remove the scrollbars */
 }
 
 #ground {
-    transition: background-color 2s;
+    transition: background-color var(--color-change-duration);
     background-color: var(--ground-color);
 }
 
@@ -61,7 +63,7 @@ canvas { display:block; } /* To remove the scrollbars */
     border-radius: 8px;
     padding: 40px;
     text-align: center;
-    transition: background-color 2s;
+    transition: background-color var(--color-change-duration);
 }
 .minting-section .minting-date {
     color: var(--primary-font-color-3);
@@ -125,22 +127,30 @@ canvas { display:block; } /* To remove the scrollbars */
     color: var(--primary-font-color-2);
 }
 
-.information-section {
+#information-section {
     background-color: var(--main-color-4);
     color: var(--primary-font-color-1);
     padding: 40px;
     border-radius: 8px;
     margin-top: 20px;
-    transition: background-color 2s;
+    
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: var(--color-change-duration) background-color, transform 1s ease, opacity 1s ease;
 }
-.information-section .info-container {
+#information-section.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+#information-section .info-container {
     margin-bottom: 60px;
 }
-.information-section h2 {
+#information-section h2 {
     font-size: 40px;
     margin-bottom: 32px;
 }
-.information-section p {
+#information-section p {
     margin-bottom: 20px;
 }
 
