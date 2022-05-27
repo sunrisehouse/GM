@@ -10,8 +10,8 @@ On Chain NFT using Generative Art
 
 [Link](https://hanjungwoo1102.github.io/GM)
 
-![pag1](https://hanjungwoo1102.github.io/GM/resources/page1.png)
+![page 1](https://hanjungwoo1102.github.io/GM/resources/page1.png)
 
-![pag2](https://hanjungwoo1102.github.io/GM/resources/page2.png)
+![page 2](https://hanjungwoo1102.github.io/GM/resources/page2.png)
 
-![pag3](https://hanjungwoo1102.github.io/GM/resources/page3.png)
+![page 3](https://hanjungwoo1102.github.io/GM/resources/page3.png)
