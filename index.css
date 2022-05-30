@@ -47,6 +47,30 @@ canvas { display:block; } /* To remove the scrollbars */
     right: 12px;
 }
 
+.yellow-logo {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.yellow-logo .yellow-good {
+    position: absolute;
+    top: 0;
+    right: 52px;
+    width: 68px;
+}
+.yellow-logo .yellow-morning {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    width: 92px;
+}
+.yellow-logo .yellow-sun {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 60px;
+}
+
 #ground {
     transition: background-color var(--color-change-duration);
     background-color: var(--ground-color);
